@@ -140,6 +140,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding: 0;
+    margin-bottom: 70px;
 }
 
 .main-title {
@@ -236,4 +237,30 @@ body {
     position: relative;
     transition: 0.3s;
     margin-bottom: 15px;
+}
+
+
+/*Footer*/
+
+.footer-box {
+    text-align: left;
+    align-items: center;
+    align-self: center;
+}
+
+.footer-line {
+    width: 1170px;
+    height: 1px;
+    background: #A8AFBB;
+    margin-bottom: 20px;
+}
+
+.footer-text {
+    color: #7C828B;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    margin-bottom: 21px; 
 }
