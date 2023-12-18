@@ -34,6 +34,7 @@ body {
     margin-right: auto;
     padding: 0;
     min-height: 100%;
+    border: solid 1px black;
 }
 
 
@@ -133,6 +134,7 @@ body {
     margin-right: auto;
     padding: 0;
     margin-bottom: 70px;
+    margin-top: 40px;
 }
 
 .main-title {
@@ -143,7 +145,6 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: 130%;
-    margin-bottom: 40px;
 }
 
 .product_card {
@@ -263,11 +264,9 @@ body {
 
 .cart-container {
     width: 1170px;
-    /* height: 1719px; */
     margin-left: auto;
     margin-right: auto;
     padding: 0;
-    margin-bottom: 70px;
 }
 
 
@@ -278,8 +277,9 @@ body {
     width: 1170px;
     height: 150px;
     /* border-bottom: solid 1px #A8AFBB; 
-    padding-bottom: 40px; */
+    padding-bottom: 50px; */
     margin-bottom: 40px;
+    margin-top: 40px;
 }
 
 .cart_img {
@@ -414,6 +414,73 @@ body {
     text-align: right;
     margin-top: 30px;
     margin-right: 47px;
+    margin-bottom: 60px;
 }
 
+.form_info {
+    width: 1800px;
+    height: 540px;
+    background: #F2F5F9;
+    margin-bottom: 60px;
+}
 
+.form-title {
+    color: #000;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    text-align: center;
+    padding-top: 70px;
+    margin-bottom: 30px;   
+}
+
+.contacts-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 430px;
+}
+
+.form {
+    width: 430px;
+    height: 60px;
+    background: #FFF;
+    color: #535860;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    margin-bottom: 30px;
+    border: none;
+    padding-left: 26px;
+}
+
+input:focus-visible {
+    border: 1px solid #4892EC;
+    border-radius: 1px;
+    outline: none;
+}
+
+.submit-btn {
+    width: 430px;
+    height: 60px;
+    background: rgba(41, 109, 193, 0.50);
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    border: none;
+    margin-bottom: 76px;
+}
