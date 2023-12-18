@@ -211,6 +211,23 @@ body {
     cursor: pointer;
 }
 
+.active-btn {
+    width: 186px;
+    height: 40px;
+    background: #00A82D;
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;    
+}
+
 .product_card:hover .product-btn {
     display: block;
     position: relative;
