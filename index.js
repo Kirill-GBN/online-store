@@ -1,10 +1,8 @@
 
 let listProduct = document.getElementById('main-container');
-let listCard = document.getElementById('listCard');
-let cartIcon = document.getElementById('cartAmount');
-let total = document.querySelector('.total');
+// let total = document.querySelector('.total');
 let body = document.querySelector('body');
-let cross = document.querySelector('.close');
+// let cross = document.querySelector('.close');
 
 
 //Создаем нашу баззу товаров
@@ -124,6 +122,7 @@ let products = [
 
 
 //Наполняем каталог товаров на странице
+let basket = JSON.parse(localStorage.getItem("data")) || [];
 
 let generateShop = () => {
     return (listProduct.innerHTML = products.map((x)=>{
@@ -143,36 +142,36 @@ let generateShop = () => {
 
 generateShop();
 
-let basket = JSON.parse(localStorage.getItem("data")) || [];
+// let basket = JSON.parse(localStorage.getItem("data")) || [];
 
-let cartItem = () => {
-    return (listCard.innerHTML = products.map((x) => {
-        let { id, image, describe, price } = x;
-        let search = basket.find((x) => x.id === id) || [];
-        return `
-        <div id=product-id-${id} class="cart_item">
-            <img class="cart_img" src=${image} alt="">
-            <p class="cart-text">${describe}</p>
-            <div class="count">
-                <div onclick="decrement(${id})" class="minus">
-                    <i class="bi bi-dash-lg"></i>
-                </div>
-                <div id = ${id} class="quantity">${search.item === undefined ? 0 : search.item}</div>
-                <div onclick= "increment(${id})" class="plus">
-                    <i class="bi bi-plus-lg"></i>
-                </div>
-            </div>
-            <p class="item_summ">${price} ₽</p>
-            <div class="close">
-                <img class="cross" src="./assets/svg/close.svg" alt="Cross">
-            </div>
-        </div>
-        `;
-    })
-    .join(""));
-};
+// let cartItem = () => {
+//     return (listCard.innerHTML = products.map((x) => {
+//         let { id, image, describe, price } = x;
+//         let search = basket.find((x) => x.id === id) || [];
+//         return `
+//         <div id=product-id-${id} class="cart_item">
+//             <img class="cart_img" src=${image} alt="">
+//             <p class="cart-text">${describe}</p>
+//             <div class="count">
+//                 <div onclick="decrement(${id})" class="minus">
+//                     <i class="bi bi-dash-lg"></i>
+//                 </div>
+//                 <div id = ${id} class="quantity">${search.item === undefined ? 0 : search.item}</div>
+//                 <div onclick= "increment(${id})" class="plus">
+//                     <i class="bi bi-plus-lg"></i>
+//                 </div>
+//             </div>
+//             <p class="item_summ">${price} ₽</p>
+//             <div class="close">
+//                 <img class="cross" src="./assets/svg/close.svg" alt="Cross">
+//             </div>
+//         </div>
+//         `;
+//     })
+//     .join(""));
+// };
 
-cartItem();
+// cartItem();
 
 
 
@@ -228,11 +227,14 @@ let update = (id) => {
 
 //Отображаем количество товара на экране (в "кружочке")
 let calculation = () => {
-    // let cartIcon = document.getElementById("cartAmount");
+    let cartIcon = document.getElementById("cartAmount");
     cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
 
 calculation(); 
+
+
+
 
 //Меняем цвет и текст кнопки товаров при добавлении в корзину
 const productBtn = document.querySelectorAll('.product-btn');
