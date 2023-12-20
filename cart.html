@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="short icon" href="./assets/ico/logo_og.ico">
 </head>
 
@@ -24,7 +25,7 @@
                 <div class="cart-box">
                     <img class="shopping-cart" src="./assets/svg/shopping_cart.svg" alt="Shopping-cart">
                     <a class="cart-link" href="">Корзина</a>
-                    <span class="dot">0</span>
+                    <span id="cartAmount" class="cartAmount">0</span>
                 </div>
             </div>
         </header>
@@ -32,29 +33,7 @@
         <main class="main-box">
             <h1 class="main-title">Корзина</h1>
             <div class="cart-container">
-                <div class="cart_items">
-                    
-                    <div class="cart_item">
-                        <img class="cart_img" src="./assets/img/air_humidifier_1.jpg" alt="Air-humidifier">
-                        <p class="cart-text">Увлажнитель воздуха STARWIND SHC1322, 3л, белый</p>
-                        
-                        <div class="count">
-                            <div class="minus">
-                                <img class="hor-line" src="./assets/svg/hor_line.svg" alt="Minus">
-                            </div>
-                            <div class="quantity"><span class="number">1</span></div>
-                            <div class="plus">
-                                <img class="hor-line" src="./assets/svg/hor_line.svg" alt="Plus-hor">
-                                <img class="vert-line" src="./assets/svg/vert_line.svg" alt="Plus-vert">
-                            </div>
-                        </div>
-    
-                        <p class="item_summ">1650 ₽</p>
-    
-                        <div class="close">
-                            <img class="cross" src="./assets/svg/close.svg" alt="Cross">
-                        </div>
-                    </div>
+                <div class="listCard">
 
                 </div>
 
