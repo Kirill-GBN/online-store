@@ -96,7 +96,11 @@ body {
 
 
 .cartAmount {
-    /* display: none; */
+    display: none;
+}
+
+.visible {
+    display: block;
     width: 21px;
     height: 21px;
     background: rgba(0, 168, 45, 1);

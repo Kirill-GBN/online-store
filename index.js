@@ -1,138 +1,26 @@
 
 let listProduct = document.getElementById('main-container');
-// let total = document.querySelector('.total');
 let body = document.querySelector('body');
+let listCard = document.getElementById('listCard');
+let cartIcon = document.getElementById('cartAmount');
 // let cross = document.querySelector('.close');
-
-
-//Создаем нашу баззу товаров
-let products = [
-    {
-        id: 1,
-        image: "./assets/img/air_humidifier_1.jpg",
-        describe: "Увлажнитель воздуха STARWIND SHC1322, 3л, белый",
-        price: 1650
-    },
-
-    {
-        id: 2,
-        image: "./assets/img/trimmer_2.jpg",
-        describe: "Триммер PHILIPS HC3521/15 серебристый/черный",
-        price: 2290
-    },
-
-    {
-        id: 3,
-        image: "./assets/img/fitness_tracker_pink_3.jpg",
-        describe: "Фитнес-трекер HONOR Band 5 CRS-B19S, 0.95, розовый",
-        price: 2390
-    },
-
-    {
-        id: 4,
-        image: "./assets/img/mouse_4.jpg",
-        describe: "Мышь A4TECH Bloody V3, игровая, оптическая, проводная, USB, черный",
-        price: 960
-    },
-
-    {
-        id: 5,
-        image: "./assets/img/fitness_tracker_black_5.jpg",
-        describe: "Фитнес-трекер HONOR Band 5 CRS-B19S, 0.95, черный",
-        price: 2390
-    },
-
-    {
-        id: 6,
-        image: "./assets/img/vacuum_cleaner_6.jpg",
-        describe: "Пылесос SINBO SVC 3497, 2500Вт, синий/серый",
-        price: 5670
-    },
-
-    {
-        id: 7,
-        image: "./assets/img/tablet_7.jpg",
-        describe: "Планшет DIGMA Optima 7 Z800 Android 10.0 серебристый",
-        price: 9490
-    },
-
-    {
-        id: 8,
-        image: "./assets/img/screen_8.jpg",
-        describe: "Монитор игровой ACER Nitro RG241YPbiipx 23.8",
-        price: 16800
-    },
-
-    {
-        id: 9,
-        image: "./assets/img/action_camera_9.jpg",
-        describe: "Экшн-камера DIGMA DiCam 310 4K, WiFi, черный",
-        price: 2290
-    },
-
-    {
-        id: 10,
-        image: "./assets/img/smart_speaker_10.jpg",
-        describe: "Умная колонка ЯНДЕКС c голосовым помощником Алисой, серебристый",
-        price: 5670
-    },
-
-    {
-        id: 11,
-        image: "./assets/img/quadcopter_11.jpg",
-        describe: "Квадрокоптер DJI Mini 2 MT2PD Fly More Combo с камерой, серый",
-        price: 60990
-    },
-
-    {
-        id: 12,
-        image: "./assets/img/vr_helmet_12.jpg",
-        describe: "Шлем виртуальной реальности HTC Vive PRO Eye EEA, черный/синий",
-        price: 11960
-    },
-
-    {
-        id: 13,
-        image: "./assets/img/multifunctional_device_13.jpg",
-        describe: "МФУ лазерный CANON i-Sensys MF445dw, A4, лазерный, черный",
-        price: 35310
-    },
-
-    {
-        id: 14,
-        image: "./assets/img/smart_watch_14.jpg",
-        describe: "Смарт-часы AMAZFIT Bip U, 1.43, зеленый / зеленый",
-        price: 4490
-    },
-
-    {
-        id: 15,
-        image: "./assets/img/coffee_machine_15.jpg",
-        describe: "Кофемашина PHILIPS EP1224/00, серый/черный",
-        price: 29990
-    },
-
-    {
-        id: 16,
-        image: "./assets/img/gyro_scooter_16.jpg",
-        describe: "Гироскутер MIZAR MZ10,5CN, 10.5, карбон",
-        price: 12990
-    }
-];
 
 
 //Наполняем каталог товаров на странице
 let basket = JSON.parse(localStorage.getItem("data")) || [];
 
+
+
 let generateShop = () => {
     return (listProduct.innerHTML = products.map((x)=>{
         let {id, image, describe, price} = x;
+        let search = basket.find((x) => x.id === id) || [];
         return `
         <div id = product-id-${id} class="product_card">
             <img class="product_img" src=${image} alt="">
             <p class="product-text">${describe}</p>
             <p class="product_summ">${price} ₽</p>
-            <button class="product-btn">добавить в корзину</button>
+            <button onclick= "increment(${id})" class="product-btn">добавить в корзину</button>
         </div>
         `;
     })
@@ -220,20 +108,16 @@ let decrement = (id) => {
 //Обновление количества в счетчике
 let update = (id) => {
     let search = basket.find((x) => x.id === id);
-    document.getElementById(id).innerHTML = search.item;
+    document.getElementById("cartAmount").innerHTML = id;
     calculation();
 };
-
 
 //Отображаем количество товара на экране (в "кружочке")
 let calculation = () => {
     let cartIcon = document.getElementById("cartAmount");
     cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
-
-calculation(); 
-
-
+calculation();
 
 
 //Меняем цвет и текст кнопки товаров при добавлении в корзину
@@ -242,9 +126,8 @@ const productBtn = document.querySelectorAll('.product-btn');
 productBtn.forEach(e => e.addEventListener('click', event => {
     event.target.style.backgroundColor = 'rgba(0, 168, 45, 1)';
     event.target.innerText = 'В корзине';
+    cartIcon.classList.add('visible')
 }));
-
-
 
 
 
@@ -310,7 +193,7 @@ productBtn.forEach(e => e.addEventListener('click', event => {
 // let listCards = [];
 
 // function reloadCard() {
-//     listCard.innerHTML = '';
+//     basket.innerHTML = '';
 //     let count = 0;
 //     let totalPrice = 0;
 //     listCards.forEach((value, id) => {
@@ -340,7 +223,7 @@ productBtn.forEach(e => e.addEventListener('click', event => {
 //         }
 //     })
 //     total.innerText = totalPrice.toLocaleString();
-//     quantity.innerText = count;
+//     cartIcon.innerText = count;
 // }
 
 // const changeQuantity = (key, quantity) => {
@@ -353,31 +236,6 @@ productBtn.forEach(e => e.addEventListener('click', event => {
 //         }
 //     reloadCard();
 // }
-
-// let basket = [];
-
-// let increment = (id) => {
-//     let selctedItem = id;
-//     let search = basket.find((x) => x.key === selctedItem.id);
-
-//     if (search === undefined) {
-//         basket.push({
-//             id: selctedItem,
-//             item: 1,
-//         })
-//     } else {
-//         search.item += 1;
-//     }
-
-//     console.log(basket);
-// };
-
-// let decrement = (key) => {
-//     let selctedItem = key
-//     console.log(selctedItem);
-// };
-
-// let update = () => {}; 
 
 
 
