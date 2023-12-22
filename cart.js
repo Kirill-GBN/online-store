@@ -35,7 +35,7 @@ let generateCartItems = () => {
         .join(""));
     } else {
         listCard.innerHTML = ``;
-        document.location.replace("https://kirill-gbn.github.io/online-store/");
+        document.location.replace("https://kirill-gbn.github.io/online-store/index.html");
     };
 };
 generateCartItems();
