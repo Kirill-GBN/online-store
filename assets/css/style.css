@@ -8,20 +8,20 @@
 
 html {
     scroll-behavior: smooth;
-    height: 100%; 
+    height: 100%;
+    min-width: 320px; 
 }
   
 body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-width: 320px;
-    min-height: 100vh;
+    width: 100vw;
     height: 1980px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
     padding: 0;
     background-color: #FFF;
+    overflow-x: hidden;
 }
 
 .wrapper {
@@ -46,9 +46,10 @@ body {
     justify-content: center;
     align-items: center;
     align-self: center;
-    justify-content: space-between;
-    margin-left: 315px;
-    margin-right: 315px;
+    justify-content: center;
+    gap: 813px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 37px;
     margin-bottom: 60px;
 }
@@ -91,10 +92,6 @@ body {
     margin-top: 3px;
     margin-bottom: 1px;
 }
-
-/* .shopping-cart, .cart-link {
-    pointer-events: none;
-} */
 
 
 .cartAmount {
@@ -150,6 +147,8 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: 130%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 40px;
 }
 
@@ -157,6 +156,8 @@ body {
     text-align: center;
     align-items: center;
     align-self: center;
+    margin-left: auto;
+    margin-right: auto;
     width: 270px;
     height: 380px;
     border: 1px solid #DEDEDE;
@@ -167,8 +168,8 @@ body {
 .product_img {
     width: 200px;
     height: 200px;
-    margin-left: 35px;
-    margin-right: 35px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
     margin-bottom: 34px;
 }
@@ -183,8 +184,8 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 15px;
 }
 
@@ -201,6 +202,8 @@ body {
 
 .product-btn {
     display: none;
+    margin-left: auto;
+    margin-right: auto;
     width: 186px;
     height: 40px;
     background: #296DC1;
@@ -217,12 +220,21 @@ body {
     cursor: pointer;
 }
 
-.product_card:hover .product-btn {
+.product_card:hover .product-btn{
     display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    transition: 0.4s;
+    transition: .1s;
+    animation: show 1s 1;
+    animation-fill-mode: both;
+    animation-delay: 0.1s;
+}
+
+@keyframes show {
+    0%{
+        opacity: 0; 
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
   
@@ -280,10 +292,8 @@ body {
     display: flex;
     align-items: center;
     align-self: center;
-    /* justify-content: space-between; */
     width: 1170px;
     height: 150px;
-    /* gap: 100px; */
 }
 
 .cart_img {
@@ -411,7 +421,6 @@ body {
     font-weight: 700;
     line-height: 130%;
     text-align: right;
-    /* margin-top: 30px; */
     margin-right: 47px;
     margin-bottom: 60px;
 }
@@ -483,3 +492,262 @@ input:focus-visible {
     border: none;
     margin-bottom: 76px;
 }
+
+
+
+/* Медиа запросы для адаптивности */
+
+/* Пропорциональное уменьшение лишнего пространства для ширины экрана от 1200px и более*/
+
+@media (min-width: 1200px) {
+    .wrapper {
+        width: 100%;
+    }
+}
+
+/* Адаптив для ширины экрана до 1200px (от 751px до 1200px) */
+@media (max-width: 1200px) {
+    .wrapper {
+        width: 1200px;
+        height: 2808px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+
+    .header-container {
+        display: flex;
+        width: 930px;
+        height: 37px;
+        gap: 573px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .main-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 40px;
+        grid-row-gap: 40px;
+        grid-auto-rows: minmax(270px, 380px);
+        width: 890px;
+        height: 2559px;
+    }
+
+    .footer-box {
+        width: 930px;
+        height: 36px;
+    }
+
+    .footer-line {
+        width: 930px;
+    }
+}
+
+/* Пропорциональное уменьшение лишнего пространства для ширины экрана до 751px */
+
+@media (min-width: 751px) {
+    .wrapper {
+        width: 100%;
+    }
+    
+}
+
+/* Адаптив для ширины экрана 750px */
+
+@media (max-width: 750px) {
+    .wrapper {
+        width: 750px;
+        height: 10375px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+
+    .header-container {
+        display: flex;
+        width: 690px;
+        height: 37px;
+        gap: 333px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .main-container {
+        display: grid;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: repeat(1, 1fr);
+        grid-column-gap: 40px;
+        grid-auto-rows: minmax(450px, 590px);
+        width: 452px;
+        height: 10109px;
+    }
+
+    .product_card {
+        text-align: center;
+        align-items: center;
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+        width: 450px;
+        height: 590px;
+        border: 1px solid #DEDEDE;
+        background: #FFF;
+        cursor: pointer;
+    }
+
+    .product_img {
+        width: 400px;
+        height: 400px;
+    }
+
+    .footer-box {
+        width: 690px;
+        height: 36px;
+    }
+
+    .footer-line {
+        width: 690px;
+    }
+
+    .product-text {
+        width: 330px;
+    }
+
+    .product_card:hover .product-btn {
+        transition: none;
+        animation: none;
+        animation-fill-mode: none;
+        animation-delay: none;
+    }
+
+    .product_img {
+        margin-bottom: 4px;
+    }
+
+    .product_summ {
+        margin-bottom: 15px;
+    }
+
+    .product-btn {
+        display: block;
+    }
+}
+
+/* Пропорциональное уменьшение лишнего пространства для ширины экрана до 581px */
+
+@media (min-width: 581px) {
+    .wrapper {
+        width: 100%;
+    }
+    
+}
+
+/* Адаптив для ширины экрана 580px */
+
+@media (max-width: 580px) {
+    .wrapper {
+        width: 580px;
+        height: 10375px;
+    }
+
+    .header-container {
+        width: 511px;
+        height: 30px;
+        gap: 275px;
+    }
+
+    .cart-link {
+        display: none;
+    }
+
+    .main-container {
+        width: 452px;
+        height: 10109px;
+    }
+
+    .footer-box {
+        width: 510px;
+        height: 52px;
+    }
+    
+    .footer-line {
+        width: 510px;
+    }
+}
+
+/* Пропорциональное уменьшение лишнего пространства для ширины экрана до 321px */
+
+@media (min-width: 321px) {
+    .wrapper {
+        width: 100%;
+    } 
+}
+
+/* Адаптив для ширины экрана 320px */
+
+@media (max-width: 320px) {
+    .wrapper {
+        width: 320px;
+        height: 6824px;
+    }
+
+    .header-container {
+        width: 290px;
+        height: 30px;
+        gap: 54px;
+    }
+
+    .cart-link {
+        display: none;
+    }
+
+    .main-container {
+        display: grid;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: repeat(1, 1fr);
+        grid-column-gap: 30px;
+        grid-auto-rows: minmax(270px, 380px);
+        width: 270px;
+        height: 6594px;
+    }
+
+    .product_card {
+        text-align: center;
+        align-items: center;
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 270px;
+        height: 380px;
+    }
+
+    .product_img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .product-text {
+        width: 230px;
+    }
+
+    .footer-box {
+        width: 290px;
+        height: 52px;
+    }
+    
+    .footer-line {
+        width: 290px;
+    }
+}
+
+/* Максимальная ширина экрана 320px */
+
+/* @media (min-width: 320px) {
+    .wrapper {
+        width: 100%;
+    } 
+} */
